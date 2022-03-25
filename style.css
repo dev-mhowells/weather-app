@@ -1,7 +1,43 @@
 body {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
   height: 100vh;
   background-image: url("tom-barrett.jpg");
   background-position: center;
   background-size: cover;
   color: white;
+}
+
+.grid-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.65fr 0.35fr;
+}
+
+.left {
+  border: 1px solid white;
+}
+
+.left p {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.center {
+  border: 1px solid white;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.right {
+  border: 1px solid white;
+}
+
+.bottom {
+  border: 1px solid white;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 7;
 }

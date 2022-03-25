@@ -2,6 +2,9 @@ const api = "50fc983604e9e8a3e164823d9e0e63e5";
 
 const locationInput = document.getElementById("location");
 const searchBtn = document.getElementById("search");
+const dispLocation = document.getElementById("display-location");
+const dispDescription = document.getElementById("display-description");
+const dispTemp = document.getElementById("display-temp");
 
 async function getCoords(country) {
   const response = await fetch(
@@ -10,7 +13,6 @@ async function getCoords(country) {
   const data = await response.json();
   const lat = data[0].lat;
   const lon = data[0].lon;
-  console.log("test", lat, lon);
   return [lat, lon];
 }
 
@@ -19,7 +21,6 @@ async function getWeather(lat, lon) {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${api}&units=metric`
   );
   const weatherData = await weatherRespsonse.json();
-  //   console.log(weatherData);
   return weatherData;
 }
 
@@ -61,38 +62,33 @@ function createDailySummaries(allData) {
   return days;
 }
 
-// getCoords("london").then((coords) => getWeather(coords[0], coords[1])); mixing async and then
+function createDomEls(arr) {
+  // put loop in here
+  const tomDescription = arr[1].description;
+  console.log(tomDescription);
+  //   const testEl = document.createElement("h2");
+  //   data.appendChild(testEl);
+  //   testEl.textContent = tomDescription;
+}
 
-// doing the same with async:
-
-// (async function () {
-//   const coords = await getCoords("london");
-//   const allData = await getWeather(coords[0], coords[1]);
-//   console.log(allData);
-//   console.log(allData.current.temp);
-//   console.log(filterData(allData));
-// })();
+function centerDisplay(obj) {
+  dispLocation.textContent = locationInput.value;
+  dispDescription.textContent = obj.description;
+  dispTemp.textContent = `${obj.temp} C`;
+}
 
 async function fulfillSearch(loc) {
   const coords = await getCoords(loc);
   const allData = await getWeather(coords[0], coords[1]);
   console.log(allData);
-  console.log(filterData(allData));
-  // loops through array of daily data and extracts needed data
-  //   allData.daily.forEach((day) => {
-  //     const dailyReport = new filteredDataDaily(
-  //       day.humidity,
-  //       day.temp.max,
-  //       day.temp.min,
-  //       day.weather[0].description,
-  //       day.wind_speed
-  //     );
-  //     days.push(dailyReport);
-  //   });
-  console.log(createDailySummaries(allData));
+  console.log(filterData(allData)); // for current weather, returns object
+  currentWeatherObj = filterData(allData);
+  centerDisplay(currentWeatherObj);
+  const allSummaries = createDailySummaries(allData); // for daily weather for week, returns array of objects
+  console.log(allSummaries);
+  createDomEls(allSummaries); // takes array of objects (daily summaries) and puts on page
 }
 
 searchBtn.addEventListener("click", function () {
-  console.log(locationInput.value);
   fulfillSearch(locationInput.value);
 });
