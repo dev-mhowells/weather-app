@@ -1,0 +1,7 @@
+body {
+  height: 100vh;
+  background-image: url("tom-barrett.jpg");
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
