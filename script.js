@@ -19,7 +19,8 @@ const windVal = document.createElement("p");
 async function getCoords(country) {
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${country}&limit=5&appid=${api}`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${country}&limit=5&appid=${api}`,
+      { mode: "cors" }
     );
     const data = await response.json();
     const lat = data[0].lat;
@@ -32,7 +33,8 @@ async function getCoords(country) {
 
 async function getWeather(lat, lon) {
   const weatherRespsonse = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${api}&units=metric`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${api}&units=metric,`,
+    { mode: "cors" }
   );
   const weatherData = await weatherRespsonse.json();
   return weatherData;
@@ -152,8 +154,8 @@ async function fulfillSearch(loc) {
 }
 
 window.onload = function () {
-  locationInput.value = "london";
-  fulfillSearch("london");
+  locationInput.value = "Tokyo";
+  fulfillSearch("tokyo");
 };
 
 searchBtn.addEventListener("click", function () {
