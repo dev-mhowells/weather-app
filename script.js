@@ -17,13 +17,17 @@ const windVal = document.createElement("p");
 // const left = document.getElementById("left");
 
 async function getCoords(country) {
-  const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${country}&limit=5&appid=${api}`
-  );
-  const data = await response.json();
-  const lat = data[0].lat;
-  const lon = data[0].lon;
-  return [lat, lon];
+  try {
+    const response = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${country}&limit=5&appid=${api}`
+    );
+    const data = await response.json();
+    const lat = data[0].lat;
+    const lon = data[0].lon;
+    return [lat, lon];
+  } catch (err) {
+    alert("Sorry, that location doesn't exist in our database");
+  }
 }
 
 async function getWeather(lat, lon) {
