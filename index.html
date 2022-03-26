@@ -21,15 +21,43 @@
         <p>Wind Speed:</p>
       </div>
       <div class="center">
-        <h4 id="display-location">location</h4>
+        <h4 id="display-location" class="display-location">location</h4>
         <h3 id="display-description">description</h3>
         <h2 id="display-temp">00 C</h2>
-        <input type="text" id="location" name="location" />
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="location..."
+        />
         <button id="search">search</button>
         <h3>Daily</h3>
       </div>
       <div class="right"></div>
-      <div class="bottom"></div>
+      <div class="bottom" id="bottom">
+        <div class="daily-display" id="daily-display">
+          <h4 class="day" id="day">Oneday</h4>
+          <h4 class="description" id="description">description</h4>
+          <div class="min-max" id="min-max">
+            <h5 class="max" id="max">Max -</h5>
+            <p class="max-val" id="max-val">00</p>
+            <h5 class="min" id="min">- Min</h5>
+            <p class="min-val" id="min-val">00</p>
+          </div>
+          <h4 class="wind" id="wind">Wind: 00</h4>
+        </div>
+        <div class="daily-display" id="daily-display">
+          <h4 class="day" id="day">Oneday</h4>
+          <h4 class="description" id="description">description</h4>
+          <div class="min-max" id="min-max">
+            <h5 class="max" id="max">Max:</h5>
+            <p class="max-val" id="max-val">00</p>
+            <h5 class="min" id="min">Min:</h5>
+            <p class="min-val" id="min-val">00</p>
+          </div>
+          <h4 class="wind" id="wind">Wind: 00</h4>
+        </div>
+      </div>
     </data>
     <script src="script.js"></script>
   </body>

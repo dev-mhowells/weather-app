@@ -6,6 +6,8 @@ const dispLocation = document.getElementById("display-location");
 const dispDescription = document.getElementById("display-description");
 const dispTemp = document.getElementById("display-temp");
 
+const bottom = document.getElementById("bottom");
+
 async function getCoords(country) {
   const response = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${country}&limit=5&appid=${api}`
@@ -63,19 +65,58 @@ function createDailySummaries(allData) {
 }
 
 function createDomEls(arr) {
+  const dailyDisplay = document.createElement("div");
+  dailyDisplay.classList.add("daily-display");
+  bottom.appendChild(dailyDisplay);
   // put loop in here
   const tomDescription = arr[1].description;
   console.log(tomDescription);
-  //   const testEl = document.createElement("h2");
+  const dailyDescription = document.createElement("h4");
+  dailyDescription.classList.add("description");
+  dailyDescription.textContent = tomDescription;
+  dailyDisplay.appendChild(dailyDescription);
+
   //   data.appendChild(testEl);
   //   testEl.textContent = tomDescription;
+}
+
+function createDomElsHtml(arr) {
+  const html = `<div class="daily-display" id="daily-display">
+  <h4 class="day" id="day">Oneday</h4>
+  <h4 class="description" id="description">${arr[1].description}</h4>
+  <div class="min-max" id="min-max">
+    <h5 class="max" id="max">Max -</h5>
+    <p class="max-val" id="max-val">${Math.round(arr[1].tempMax)}°</p>
+    <h5 class="min" id="min">- Min</h5>
+    <p class="min-val" id="min-val">${Math.round(arr[1].tempMin)}°</p>
+  </div>
+  <h4 class="wind" id="wind">Wind: ${arr[1].windSpd}</h4>
+</div>`;
+  bottom.insertAdjacentHTML("beforeend", html);
 }
 
 function centerDisplay(obj) {
   dispLocation.textContent = locationInput.value;
   dispDescription.textContent = obj.description;
-  dispTemp.textContent = `${obj.temp} C`;
+  dispTemp.textContent = `${Math.round(obj.temp)}°C`;
 }
+
+// function bottomDisplay(obj) {
+//     const html =
+// }
+
+const now = new Date();
+const dayOfWeekArray = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const dayOfWeek = now.getDay();
+console.log(dayOfWeekArray[dayOfWeek]);
 
 async function fulfillSearch(loc) {
   const coords = await getCoords(loc);
@@ -87,6 +128,7 @@ async function fulfillSearch(loc) {
   const allSummaries = createDailySummaries(allData); // for daily weather for week, returns array of objects
   console.log(allSummaries);
   createDomEls(allSummaries); // takes array of objects (daily summaries) and puts on page
+  createDomElsHtml(allSummaries);
 }
 
 searchBtn.addEventListener("click", function () {
