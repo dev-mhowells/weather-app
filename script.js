@@ -103,9 +103,9 @@ function createDomElsHtml(arr) {
   <h4 class="day" id="day">${dayOfWeekArray[n]}</h4>
   <h4 class="description" id="description">${arr[i].description}</h4>
   <div class="min-max" id="min-max">
-    <h5 class="max" id="max">Max -</h5>
+    <h5 class="max" id="max">Max  </h5>
     <p class="max-val" id="max-val">${Math.round(arr[i].tempMax)}°</p>
-    <h5 class="min" id="min">- Min</h5>
+    <h5 class="min" id="min">  Min</h5>
     <p class="min-val" id="min-val">${Math.round(arr[i].tempMin)}°</p>
   </div>
   <h4 class="wind" id="wind">wind ${Math.round(arr[i].windSpd * 2.237)} mph</h4>
