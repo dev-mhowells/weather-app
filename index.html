@@ -15,10 +15,12 @@
   </head>
   <body>
     <data class="grid-container" id="grid-container">
-      <div class="left">
-        <p>Feels like:</p>
-        <p>Humidity:</p>
-        <p>Wind Speed:</p>
+      <div class="left" id="left">
+        <div class="extra-data" id="extra-data">
+          <p class="left-feels">Feels like</p>
+          <p class="left-humidity">Humidity</p>
+          <p class="left-wind">Wind Speed</p>
+        </div>
       </div>
       <div class="center">
         <h4 id="display-location" class="display-location">location</h4>
@@ -33,31 +35,13 @@
         <button id="search">search</button>
         <h3>Daily</h3>
       </div>
-      <div class="right"></div>
-      <div class="bottom" id="bottom">
-        <div class="daily-display" id="daily-display">
-          <h4 class="day" id="day">Oneday</h4>
-          <h4 class="description" id="description">description</h4>
-          <div class="min-max" id="min-max">
-            <h5 class="max" id="max">Max -</h5>
-            <p class="max-val" id="max-val">00</p>
-            <h5 class="min" id="min">- Min</h5>
-            <p class="min-val" id="min-val">00</p>
-          </div>
-          <h4 class="wind" id="wind">Wind: 00</h4>
-        </div>
-        <div class="daily-display" id="daily-display">
-          <h4 class="day" id="day">Oneday</h4>
-          <h4 class="description" id="description">description</h4>
-          <div class="min-max" id="min-max">
-            <h5 class="max" id="max">Max:</h5>
-            <p class="max-val" id="max-val">00</p>
-            <h5 class="min" id="min">Min:</h5>
-            <p class="min-val" id="min-val">00</p>
-          </div>
-          <h4 class="wind" id="wind">Wind: 00</h4>
-        </div>
+      <div class="right">
+        <!-- <div class="time-box">
+          <h4>Local time</h4>
+          <h2 class="local-time" id="local-time">00:00</h2>
+        </div> -->
       </div>
+      <div class="bottom" id="bottom"></div>
     </data>
     <script src="script.js"></script>
   </body>

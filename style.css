@@ -68,7 +68,48 @@ button:hover {
 }
 
 .left {
-  border: 1px solid white;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.extra-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin-right: 50px;
+  letter-spacing: 1px;
+  font-weight: 200;
+}
+
+.left-feels {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.left-feels-value {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.left-humidity {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.left-humidity-value {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.left-wind {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.left-wind-value {
+  grid-column: 2;
+  grid-row: 3;
 }
 
 .left p {
@@ -79,7 +120,6 @@ button:hover {
 /* ----------------------------CENTER -------------------------------*/
 
 .center {
-  border: 1px solid white;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -91,16 +131,18 @@ button:hover {
 }
 
 .right {
-  border: 1px solid white;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 /* ----------------------------- BOTTOM ---------------------------*/
 
 .bottom {
-  border: 1px solid white;
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  background-color: rgba(0, 0, 0, 0.411);
 }
 
 .daily-display {
@@ -108,8 +150,18 @@ button:hover {
   grid-template-rows: 1fr 1fr 2fr 1fr;
 }
 
-.daily-display > * {
-  border: 1px solid white;
+.day {
+  text-transform: uppercase;
+  font-weight: 200;
+  text-decoration: underline;
+}
+
+.description {
+  font-weight: 400;
+}
+
+.wind {
+  font-weight: 200;
 }
 
 .min-max {
@@ -152,7 +204,6 @@ button:hover {
 }
 
 .daily-display {
-  border: 1px solid white;
   display: grid;
   align-items: center;
   justify-items: center;
