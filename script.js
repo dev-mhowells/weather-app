@@ -151,8 +151,10 @@ async function fulfillSearch(loc) {
   locationInput.value = "";
 }
 
-locationInput.value = "london";
-fulfillSearch("london");
+window.onload = function () {
+  locationInput.value = "london";
+  fulfillSearch("london");
+};
 
 searchBtn.addEventListener("click", function () {
   console.log(locationInput.value.toLowerCase());
